@@ -1,9 +1,7 @@
 from argparse import ArgumentParser, Namespace
-from pandas import read_csv, DataFrame  # , melt
+from pandas import read_csv, DataFrame
 from numpy import set_printoptions
 import json
-# import seaborn as sns
-# from matplotlib import pyplot as plt
 from linear import LinearRegression
 
 
@@ -55,31 +53,6 @@ def main():
 
         json.dump(w.tolist(), f)
         print("The results are written into", "\"" + f.name + "\"")
-
-    #  =====================================
-
-    mse = model.mse(X, y)
-    print("PREDICTION", model.predict(X))
-    print("MSE", mse)
-    print("SQRT_MSE", mse ** .5)
-
-    result = DataFrame({
-        "pred": model.predict(X),
-        "obs": y,
-        "features": X[:, 0]
-    })
-
-    print(result)
-    # melted = melt(result, id_vars=["features"], value_vars=["pred", "obs"])
-
-    # sns.set_theme()
-    # sns.relplot(
-    #     data=melted,
-    #     x="features",
-    #     y="value",
-    #     hue="variable"
-    # )
-    # plt.show()
 
 
 if __name__ == "__main__":
